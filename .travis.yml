@@ -9,3 +9,15 @@ script:
   - docker run -e CI=true fossomickael/docker-react npm run test
 
 language: generic
+
+
+deploy:
+   access_key_id: $AWS_ACCESS_KEY
+   secret_access_key: $AWS_SECRET_KEY
+   provider: elasticbeanstalk
+   region: "eu-west-2"
+   app: "docker-react-udemy"
+   env: "dockerreactudemy-env"
+   bucket_name: "elasticbeanstalk-eu-west-2-590254671412"
+   on:
+    branch: master
